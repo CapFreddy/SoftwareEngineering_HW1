@@ -3,6 +3,7 @@
 #include <queue>
 #include <iostream>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 
@@ -214,12 +215,12 @@ private:
 class BurteForce
 {
 public:
-	void Solve()
+	void Solve(string in_file, string out_file)
 	{
-		Input();
+		Input(in_file);
 		IntersectLLC();
 		IntersectCC();
-		Output();
+		Output(out_file);
 		check_intersections();
 		return;
 	}
@@ -229,26 +230,27 @@ private:
 	vector<Circle> m_allCircles;
 	unordered_set<Node> m_allIntersections;
 
-	void Input()
+	void Input(string in_file)
 	{
 		char geoType;
 		int N;
 
-		cin >> N;
+		ifstream fin(in_file);
+		fin >> N;
 		while (N--)
 		{
 			cin >> geoType;
 			if (geoType == 'L')
 			{
 				int x1, y1, x2, y2;
-				cin >> x1 >> y1 >> x2 >> y2;
+				fin >> x1 >> y1 >> x2 >> y2;
 				Line curLine(x1, y1, x2, y2);
 				m_allLines.push_back(curLine);
 			}
 			else if (geoType == 'C')
 			{
 				int x, y, r;
-				cin >> x >> y >> r;
+				fin >> x >> y >> r;
 				Circle curCircle(x, y, r);
 				m_allCircles.push_back(curCircle);
 
@@ -309,9 +311,11 @@ private:
 		return;
 	}
 
-	void Output()
+	void Output(string out_file)
 	{
-		cout << m_allIntersections.size() << endl;
+		ofstream outfile;
+		outfile.open(out_file);
+		outfile << m_allIntersections.size();
 		return;
 	}
 
