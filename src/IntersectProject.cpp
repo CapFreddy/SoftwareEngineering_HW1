@@ -3,20 +3,24 @@
 
 int main(int argc, char* argv[])
 {
+
 	string in_file, out_file;
 	for (int i = 0; i < argc; i++)
 	{
-		if (argv[i] == "-i")
+		if (string(argv[i]) == "-i")
 		{
-			in_file = argv[i + 1];
+			in_file = string(argv[i + 1]);
 		}
-		else if (argv[i] == "-o")
+		else if (string(argv[i]) == "-o")
 		{
-			out_file = argv[i + 1];
+			out_file = string(argv[i + 1]);
 		}
 	}
 
-	BurteForce bf;
+
+	BruteForce bf;
 	bf.Solve(in_file, out_file);
+	// cout << bf.getIntersection("input.txt");
+	
 	return 0;
 }
