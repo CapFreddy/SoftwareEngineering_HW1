@@ -29,3 +29,7 @@
 # Executables
 *.out
 *.app
+
+# Intermediate
+*.ilk
+*.pdb

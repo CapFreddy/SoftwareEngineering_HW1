@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
 	BruteForce bf;
 	bf.Solve(in_file, out_file);
-	// cout << bf.getIntersection("input.txt");
+	// cout << bf.getIntersection("../../pat/input.txt");
 	
 	return 0;
 }
