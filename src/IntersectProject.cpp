@@ -1,26 +1,28 @@
 #include "Class.h"
 
 
+
 int main(int argc, char* argv[])
 {
 
-	string in_file, out_file;
+	string inputFile, outputFile;
+
 	for (int i = 0; i < argc; i++)
 	{
 		if (string(argv[i]) == "-i")
 		{
-			in_file = string(argv[i + 1]);
+			inputFile = string(argv[i + 1]);
 		}
 		else if (string(argv[i]) == "-o")
 		{
-			out_file = string(argv[i + 1]);
+			outputFile = string(argv[i + 1]);
 		}
 	}
-
-
-	BruteForce bf;
-	bf.Solve(in_file, out_file);
-	// cout << bf.getIntersection("../../pat/combined.txt");
-	
+	Intersect intersect(inputFile);
+	intersect.CalculateIntersections();
+	ofstream ofs;
+	ofs.open(outputFile, ios::out);
+	ofs << intersect.GetIntersectionNumber();
+	ofs.close();
 	return 0;
 }
